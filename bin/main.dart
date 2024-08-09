@@ -21,7 +21,8 @@ void main() async {
     2. Hiển thị danh sách sinh viên
     3. Tìm sinh viên theo tên hoặc ID
     4. Sửa thông tin sinh viên
-    5. Thoát
+    5. Xem điểm cao nhất
+    6. Thoát
     Vui lòng chọn số: ''');
 
     String? choice = stdin.readLineSync();
@@ -41,10 +42,10 @@ void main() async {
         String? choice = stdin.readLineSync();
         switch (choice) {
           case '1':
-
+            findStudentById();
             break;
           case '2':
-
+            findStudentByName();
             break;
           default:
             print('Invalid number');
@@ -52,9 +53,12 @@ void main() async {
         }
         break;
       case'4':
-
+          updateStudent();
         break;
-      case '5':
+      case'5':
+          getStudentHighestScore();
+        break;
+      case '6':
         print('Thoát chương trình');
         exit(0);
       default:

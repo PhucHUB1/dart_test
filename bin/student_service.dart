@@ -74,13 +74,25 @@ Future<List<Student>> getAllStudents(String filePath) async {
   return students;
 }
 
-Future<void> findStudent(int id) async {
-
+Future<void> findStudentByName() async {
+  // TODO: implement findStudentByName
+  throw UnimplementedError();
+}
+Future<void> findStudentById() async {
+  // TODO: implement findStudentById
+  throw UnimplementedError();
 }
 
-Future<void> updateStudent(Student student) async {
 
+Future<void> updateStudent() async {
+  // TODO: implement updateStudent
+  throw UnimplementedError();
 }
+Future<void> getStudentHighestScore() async {
+  // TODO: implement getStudentHighestScore
+  throw UnimplementedError();
+}
+
 bool isAlphabet(String str) {
   RegExp alphabet = RegExp(r'^[A-Za-z]+$');
   return alphabet.hasMatch(str);
