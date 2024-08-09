@@ -1,11 +1,64 @@
 import 'dart:io';
+import 'package:path/path.dart' as p;
+import 'student_service.dart';
+import 'student.dart';
 
-void main(List<String> arguments) {
-  print("Enter your name?");
+void main() async {
+  const String fileName = 'students.json';
+  final String directoryPath = p.join(Directory.current.path,'data');
+  final Directory directory = Directory(directoryPath);
 
-  // null safety in name string
-  String? name = stdin.readLineSync();
+  if(!await directory.exists()){
+    await directory.create(recursive: true);
+  }
+  final String filePath = p.join(directoryPath,fileName);
+  List<Student> studentList = await loadStudents(filePath);
 
-  // Printing the name
-  print("Hello, $name!");
+  while (true) {
+    stdout.write('''
+    Menu:
+    1. Thêm sinh viên
+    2. Hiển thị danh sách sinh viên
+    3. Tìm sinh viên theo tên hoặc ID
+    4. Sửa thông tin sinh viên
+    5. Thoát
+    Vui lòng chọn số: ''');
+
+    String? choice = stdin.readLineSync();
+    switch (choice) {
+      case '1':
+        addStudent(filePath, studentList);
+        break;
+      case '2':
+        displayStudent(filePath);
+        break;
+      case'3':
+        stdout.write('''
+        Find Student By:
+        1. ID
+        2. Name
+       Vui lòng chọn số: ''');
+        String? choice = stdin.readLineSync();
+        switch (choice) {
+          case '1':
+
+            break;
+          case '2':
+
+            break;
+          default:
+            print('Invalid number');
+            break;
+        }
+        break;
+      case'4':
+
+        break;
+      case '5':
+        print('Thoát chương trình');
+        exit(0);
+      default:
+        print('Chọn sai, vui lòng chọn lại');
+    }
+  }
 }
